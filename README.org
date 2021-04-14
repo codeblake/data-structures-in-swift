@@ -1,0 +1,4 @@
+#+TITLE: Data Structures
+#+AUTHOR: Blake Romero
+
+This repository contains a collection of data structures that I have implemented.
