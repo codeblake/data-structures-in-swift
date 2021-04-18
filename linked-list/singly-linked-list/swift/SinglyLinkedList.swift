@@ -24,16 +24,32 @@ class SinglyLinkedList {
     }
 
     func prepend(_ data: Any) {
-         // store head node
+         // Store head node
          let tempNode = head
          
-         // assign new head node using input
+         // Assign new head node using input
          head = Node(data)
 
-         // point new head node to the previous head
+         // Point new head node to the previous head
          head.next = tempNode
 
-         // increment the length
+         // Increment the length
+         length += 1
+    }
+
+    func append(_ data: Any) {
+         // Start from the head node
+         var currentNode = head
+
+         // Loop through list to the last node
+         while currentNode.next != nil {
+             currentNode = currentNode.next!
+         }
+
+         // Link new node to the last node
+         currentNode.next = Node(data)
+
+         // Increment the length
          length += 1
     }
 }
