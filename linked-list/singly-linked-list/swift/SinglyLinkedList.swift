@@ -18,15 +18,17 @@ class SinglyLinkedList {
     // Returns the string representation of the list.
     // - Complexity: O(n)
     var description: String {
-        var string = "["
+        var string = ""
         var currentNode = head
         while currentNode.next != nil {
-            string.append("\(currentNode.data)")
+            string.append("[*]--> \(currentNode.data)\n")
+            string.append("[*]\n")
+            string.append(" |\n")
+            string.append(" v\n")
             currentNode = currentNode.next!
-            string += ","
         }
-        string.append("\(currentNode.data)")
-        string += "]"
+        string.append("[*]--> \(currentNode.data)\n")
+        string.append("[/]")
         return string
     }
 
