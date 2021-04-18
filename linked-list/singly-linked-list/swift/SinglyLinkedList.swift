@@ -7,9 +7,16 @@ class SinglyLinkedList {
         length += 1
     }
 
+    //  Returns the length of the list.
+    // - Complexity: O(1)
     var count: Int { length }
+
+    // Returns the data stored at the head of the list
+    // - Complexity: O(1)
     var first: Any { head.data }
 
+    // Returns the string representation of the list.
+    // - Complexity: O(n)
     var description: String {
         var string = "["
         var currentNode = head
@@ -23,6 +30,8 @@ class SinglyLinkedList {
         return string
     }
 
+    // Inserts new data as the first item of the list.
+    // - Complexity: O(1)
     func prepend(_ data: Any) {
          // Store head node
          let tempNode = head
@@ -37,6 +46,8 @@ class SinglyLinkedList {
          length += 1
     }
 
+    // Inserts new data as the last item of the list.
+    // - Complexity: O(n)
     func append(_ data: Any) {
          // Start from the head node
          var currentNode = head
