@@ -23,14 +23,13 @@ class SinglyLinkedList {
         var currentNode = head
 
         while currentNode.next != nil {
-            string.append("[*]--> \(currentNode.data)\n")
-            string.append("[*]\n")
-            string.append(" |\n")
-            string.append(" v\n")
+            string.append("[•] → \(currentNode.data)\n")
+            string.append("[•]\n")
+            string.append(" ↓\n")
             currentNode = currentNode.next!
         }
 
-        string.append("[*]--> \(currentNode.data)\n")
+        string.append("[•] → \(currentNode.data)\n")
         string.append("[/]")
         return string
     }
