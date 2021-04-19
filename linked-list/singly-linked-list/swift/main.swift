@@ -34,3 +34,12 @@ var position = 2
 myLinkedList.insert(data, at: 2)
 print("Inserted \(data) at position \(position)")
 print(myLinkedList.description)
+
+// Remove
+position = 3
+let removedData = myLinkedList.remove(at: position)
+print("Removed:", removedData as Any)
+print(myLinkedList.description)
+
+// Get
+print("Got:", myLinkedList.get(at: 2) as Any)
