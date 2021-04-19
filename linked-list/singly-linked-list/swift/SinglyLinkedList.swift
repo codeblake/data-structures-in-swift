@@ -143,4 +143,30 @@ class SinglyLinkedList {
         }
         return nil
     }
+
+    /// Get data at a position
+    /// - Parameter position: a non-zero integer value
+    /// - Complexity: O(n)
+    func get(at position: Int) -> Any? {
+        // Check if out of range
+        if position > count || position == 0 {
+           print("Warning: Position starts from 1 to \(count)")
+        }
+        
+        // If requesting first element
+        if position == 1 {
+          return head.data
+        }
+        // Get data at position
+        else {
+            // Temporary node
+            var node = head
+        
+            // Loop until at position
+            for _ in 1 ..< position {
+                node = node.next!
+            }
+            return node.data
+        }
+    }
 }
