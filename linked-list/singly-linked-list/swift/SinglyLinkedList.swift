@@ -1,3 +1,4 @@
+/// Singly Linked List
 class SinglyLinkedList {
     var head: Node
     private var length: Int = 0
@@ -7,16 +8,16 @@ class SinglyLinkedList {
         length += 1
     }
 
-    //  Returns the length of the list.
-    // - Complexity: O(1)
+    ///  Returns the length of the list.
+    /// - Complexity: O(1)
     var count: Int { length }
 
-    // Returns the data stored at the head of the list
-    // - Complexity: O(1)
+    /// Returns the data stored at the head of the list
+    /// - Complexity: O(1)
     var first: Any { head.data }
 
-    // Returns the string representation of the list.
-    // - Complexity: O(n)
+    /// Returns the string representation of the list.
+    /// - Complexity: O(n)
     var description: String {
         var string = ""
         var currentNode = head
@@ -34,72 +35,75 @@ class SinglyLinkedList {
         return string
     }
 
-    // Inserts new data as the first item of the list.
-    // - Complexity: O(1)
+    /// Inserts new data as the first item of the list.
+    /// - Complexity: O(1)
     func prepend(_ data: Any) {
-        // Store head node
+        /// Store head node
         let tempNode = head
 
-        // Assign new head node using input
+        /// Assign new head node using input
         head = Node(data)
 
-        // Point new head node to the previous head
+        /// Point new head node to the previous head
         head.next = tempNode
 
-        // Increment the length
+        /// Increment the length
         length += 1
     }
 
-    // Inserts new data as the last item of the list.
-    // - Complexity: O(n)
+    /// Inserts new data as the last item of the list.
+    /// - Complexity: O(n)
     func append(_ data: Any) {
-        // Start from the head node
+        /// Start from the head node
         var currentNode = head
 
-        // Loop through list to the last node
+        /// Loop through list to the last node
         while currentNode.next != nil {
             currentNode = currentNode.next!
         }
 
-        // Link new node to the last node
+        /// Link new node to the last node
         currentNode.next = Node(data)
 
-        // Increment the length
+        /// Increment the length
         length += 1
     }
 
+	/// Inserts new data at position.
+	/// - Parameter position: a non-zero integer value
+	/// - Complexity: O(n)
     func insert( _ data: Any, at position: Int) {
-        // When out of range
+        /// When out of range
         if position > count || position == 0 {
             print("Position out of range")
         }
 
-        // When at first position
+        /// When at first position
         if position == 1 {
             prepend(data)
         }
-        // When at last position
+        /// When at last position
         else if position == count {
 		    append(data)
         }
-        // When in-between first & last
+        /// When in-between first & last
         else {
             var previous = head
             var current = previous
 		    
-            // Loop until at position
+            /// Loop until at position
             for i in 1 ..< position {
      			print("\(i): on \(current.data)")
                 previous = current
                 current = previous.next!
             }
 		    
-            // Insert new node between previous & current node
+            /// Insert new node between previous & current node
             let node = Node(data)
             previous.next = node
             node.next = current
 
-     		// Increment length
+     		/// Increment length
 		   length += 1
         }
     }
