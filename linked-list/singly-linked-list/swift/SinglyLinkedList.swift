@@ -88,12 +88,12 @@ class SinglyLinkedList {
         }
         // When in-between first & last
         else {
+            // Temporary nodes
             var previous = head
             var current = previous
 
             // Loop until at position
-            for i in 1 ..< position {
-            print("\(i): on \(current.data)")
+            for _ in 1 ..< position {
                 previous = current
                 current = previous.next!
             }
@@ -106,5 +106,41 @@ class SinglyLinkedList {
           // Increment length
           length += 1
         }
+    }
+
+    /// Remove data at position.
+    /// - Parameter position: a non-zero integer value
+    /// - Complexity: O(n)
+    func remove(at position: Int) -> Any? {
+        // If out of range
+        if position > length || position == 0 {
+            print("Position out of range")
+            return nil
+        }
+
+        // Remove at first position:  O(1)
+        if position == 1 {
+                head = head.next!
+                length -= 1
+        }
+        // Remove at position n: O(n)
+        else {
+            // Temporary nodes
+            var previous = head
+            var current = previous
+
+            // Loop through
+            for _ in 1 ..< position {
+                previous = current
+                current = previous.next!
+            }
+
+            // Remove node
+            previous.next = current.next
+            length -= 1
+        
+            return current.data
+        }
+        return nil
     }
 }
