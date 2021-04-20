@@ -49,3 +49,10 @@ print("Got node:", myLinkedList.getNode(at: 3)!.data)
 
 // Previous node
 print("Got previous node:", myLinkedList.getNode(at:3)!.previous!.data)
+
+// Reverse list
+print("Current list:")
+print(myLinkedList.description)
+let reversed = myLinkedList.reverse()
+print("Reversed list:")
+print(reversed.description)
