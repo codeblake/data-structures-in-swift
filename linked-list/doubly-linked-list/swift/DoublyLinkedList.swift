@@ -224,7 +224,8 @@ class DoublyLinkedList {
         }
     }
 
-    // Reverse the Linked List
+    /// Reverse the Linked List
+    /// - Complexity: O(n)
     func reverse() -> DoublyLinkedList {
         // Temporary variables
         var array: [Node] = []
