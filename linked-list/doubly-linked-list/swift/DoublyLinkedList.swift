@@ -15,6 +15,10 @@ class DoublyLinkedList {
     /// Returns the data stored at the head of the list
     /// - Complexity: O(1)
     var first: Any { head.data }
+    
+    /// Return the first node of the list
+    /// - Complexity: O(1)
+    var firstNode: Node { head }
 
     /// Returns the string representation of the list.
     /// - Complexity: O(n)
@@ -218,5 +222,45 @@ class DoublyLinkedList {
             }
             return node
         }
+    }
+
+    // Reverse the Linked List
+    func reverse() -> DoublyLinkedList {
+        // Temporary variables
+        var array: [Node] = []
+        var current = head
+    
+        // Store values into an array
+        while array.count != count {
+            array.append(current)
+            if let next = current.next {
+                    current = next
+             }
+        }
+
+        // Pop last array item as the head node for the new list
+        let lastNode = array.popLast()
+
+        // Fix head previous to point to nil
+        lastNode!.previous = nil
+            
+        // Add new linked list
+        let newDoublyLinkedList = DoublyLinkedList(lastNode!)
+
+        // Temporary node for loop
+        current = newDoublyLinkedList.firstNode
+        
+        // Loop through array and pop into new list
+        while array.count > 0 {
+            let poped = array.popLast()!
+            current.next = poped
+            current.next!.previous = current
+            current = current.next!
+        }
+        
+        // Fix last node to point to nil
+        current.next = nil
+        
+      return newDoublyLinkedList
     }
 }
