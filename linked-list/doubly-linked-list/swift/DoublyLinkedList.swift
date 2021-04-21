@@ -96,7 +96,7 @@ class DoublyLinkedList {
         }
         // When at last position
         else if position == count {
-        append(data)
+            append(data)
         }
         // When in-between first & last
         else {
@@ -136,8 +136,8 @@ class DoublyLinkedList {
 
         // Remove at first position:  O(1)
         if position == 1 {
-                head = head.next!
-                length -= 1
+            head = head.next!
+            length -= 1
         }
         // Remove at position n: O(n)
         else {
@@ -178,12 +178,12 @@ class DoublyLinkedList {
     func get(at position: Int) -> Any? {
         // Check if out of range
         if position > count || position == 0 {
-           print("Warning: Position starts from 1 to \(count)")
+            print("Warning: Position starts from 1 to \(count)")
         }
 
         // If requesting first element
         if position == 1 {
-          return head.data
+            return head.data
         }
         // Get data at position
         else {
@@ -204,12 +204,12 @@ class DoublyLinkedList {
     func getNode(at position: Int) -> Node? {
         // Check if out of range
         if position > count || position == 0 {
-           print("Warning: Position starts from 1 to \(count)")
+            print("Warning: Position starts from 1 to \(count)")
         }
 
         // If requesting first element
         if position == 1 {
-          return head
+            return head
         }
         // Get data at position
         else {
