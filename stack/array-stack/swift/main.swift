@@ -18,20 +18,42 @@ stack.push(88)
 print("PUSHED: 88")
 
 // Peek
-print("PEEK:", stack.peek())
+if let data = stack.peek {
+	print("PEEK:", data)
+} else {
+	print("Stack is empty. Nothing to peek!")
+}
 
 // Description
 print("Stack:", stack.description)
 
 // Pop
-print("POPED:", stack.pop())
-print("POPED:", stack.pop())
-print("POPED:", stack.pop())
-print("POPED:", stack.pop())
-print("POPED:", stack.pop())
+if let data = stack.pop() {
+	print("POPED:",data)
+} else { print("Nothing to pop!") }
+
+if let data = stack.pop() {
+	print("POPED:",data)
+} else { print("Nothing to pop!") }
+
+if let data = stack.pop() {
+	print("POPED:",data)
+} else { print("Nothing to pop!") }
+
+if let data = stack.pop() {
+	print("POPED:",data)
+} else { print("Nothing to pop!") }
+
+if let data = stack.pop() {
+	print("POPED:",data)
+} else { print("Nothing to pop!") }
 
 // Peek on empty
-print("Peeked:", stack.peek())
+if let data = stack.peek {
+	print("PEEK:", data)
+} else {
+	print("Stack is empty. Nothing to peek!")
+}
 
 // Push on empty
 stack.push("King")
@@ -39,4 +61,3 @@ print("Pushed: King")
 
 // Description
 print("Stack:",stack.description)
-
