@@ -49,4 +49,16 @@ class LinkedStack {
 
 		length -= 1
 	}
+
+	func push(_ data: Any) {
+		if last == nil {
+			first = Node(data)
+			last = first
+		}
+		else {
+			last!.next = Node(data)
+			last = last!.next
+		}
+		length += 1
+	}
 }
