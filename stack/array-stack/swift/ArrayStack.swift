@@ -1,29 +1,22 @@
 class ArrayStack {
 	var array: [Any] = []
-	var length = 0
-	private var first: Any {
-		array.first
-	}
+	var isEmpty: Bool { array.isEmpty}
 
-	var isEmpty: Bool { length == 0 }
 	var description: String {
 		if isEmpty { return "[]" }
 		var string = "["
-		for i in 0 ..< length {
+		for i in 0 ..< array.count {
 			string.append("\(array[i])")
-			if i < length-1 { string.append(",") }
+			if i < array.count-1 { string.append(",") }
 		}
 		string.append("]")
 		return string
 	}
 
-	func peek() -> Any {
-		return first
-	}
+	var peek: Any? { array.last }
 
 	func pop() -> Any? {
 		if !isEmpty {
-			length -= 1
 			return array.removeLast()
 		}
 		return nil
@@ -31,6 +24,5 @@ class ArrayStack {
 
 	func push(_ data: Any) {
 		array.append(data)
-		length += 1
 	}
 }
