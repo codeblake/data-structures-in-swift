@@ -51,6 +51,8 @@ if let node = stack.pop() {
 // Peek on empty
 if let data = stack.peek() {
 	print("Peeked:", data)
+} else {
+  print("Nothing to peek!")
 }
 
 // Push on empty
