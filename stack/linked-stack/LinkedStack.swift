@@ -17,4 +17,8 @@ class LinkedStack {
 		string.append("]")
 		return string
 	}
+
+	func peek() -> Any? {
+		return first != nil ? first!.data : nil
+	}
 }
