@@ -2,6 +2,7 @@ class LinkedStack {
 	var first: Node?
 	var last: Node?
 	var length = 0
+	
 	var isEmpty: Bool { length == 0 }
 	var description: String {
 		if isEmpty { return "[]" }
@@ -48,6 +49,8 @@ class LinkedStack {
 		last = prev
 
 		length -= 1
+
+		return temp
 	}
 
 	func push(_ data: Any) {
