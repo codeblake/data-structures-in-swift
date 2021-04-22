@@ -21,4 +21,32 @@ class LinkedStack {
 	func peek() -> Any? {
 		return first != nil ? first!.data : nil
 	}
+
+	func pop() -> Node? {
+		if isEmpty { return nil }
+		
+		if length == 1 {
+			let node = first
+			first = nil
+			last = nil
+			length -= 1
+			return node!
+		}
+
+		var temp = first
+		var prev = temp
+
+		while temp!.next != nil {
+			prev = temp
+			temp = temp!.next
+		}
+
+		// unlink
+		prev!.next = nil
+
+		// set new last
+		last = prev
+
+		length -= 1
+	}
 }
