@@ -76,4 +76,52 @@ class BinarySearchTree {
             return nil
         }
     }
+
+// TESTING
+
+/// Travser in order and print value
+func traverseInOrder(_ node: Node?) {
+    if node == nil { return }
+    traverseInOrder(node?.left)
+    print(node!.value)
+    traverseInOrder(node?.right)
+}
+
+//        12
+//       /  \
+//      /    \
+//     /      \
+//    8       22
+//   / \     /  \
+//  6   10  19  33
+
+// let n = Node(12)
+// n.left = Node(8)
+// n.right = Node(22)
+// n.left!.left = Node(6)
+// n.left!.right = Node(10)
+// n.right!.left = Node(19)
+// n.right!.right = Node(33)
+// traverseInOrder(n)
+
+// Create binary tree with root value
+let bt = BinarySearchTree()
+
+// Insert values
+bt.insert(12)
+bt.insert(8)
+bt.insert(22)
+bt.insert(6)
+bt.insert(10)
+bt.insert(19)
+bt.insert(33)
+
+// Traverse tree
+traverseInOrder(bt.root)
+
+// Find value
+if let node = bt.lookup(10) {
+    print("Found", node.value)
+} else {
+    print("Nothing found!")
 }
