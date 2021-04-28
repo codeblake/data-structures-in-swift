@@ -2,6 +2,8 @@ class Node {
     var left: Node?
     var right: Node?
     var value: Int
+    var isLeaf: Bool { left == nil && right == nil }
+    var parent: Node?
 
     init(_ value: Int) {
         self.value = value
