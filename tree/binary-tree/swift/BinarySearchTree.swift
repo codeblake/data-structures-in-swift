@@ -81,13 +81,59 @@ class BinarySearchTree {
         }
     }
 
+    @discardableResult
+    func remove(_ root: inout Node?, _ value: Int) -> Node? {
+        // Return if nil
+        guard var node = root else { return root }
+
+        // Search for value
+        if value < node.value {
+            node.left = remove(&node.left, value)
+        } else if value > node.value {
+            node.right = remove(&node.right, value)
+        }
+        // When value found
+        else {
+            // case 1: no child
+            if node.isLeaf {
+                // have to use 'root' instead of 'node' to assign nil
+                root = nil
+            }
+            // case 2: has one child
+            else if node.left == nil {
+                node = node.right!
+            }
+            else if node.right == nil {
+                node = node.left!
+            }
+            // case 3: has two children
+            else {
+                let temp = findMin(from: node.right!)
+                node.value = temp.value
+                node.right = remove(&node.right, temp.value)
+            }
+        }
+        return root
+    }
+
+
+    func findMin(from root: Node) -> Node {
+        var temp = root
+        while temp.left != nil {
+            temp = temp.left!
+        }
+        return temp
+    }
+
+}
+
 // TESTING
 
-/// Travser in order and print value
+/// Traverse in order and print value
 func traverseInOrder(_ node: Node?) {
     if node == nil { return }
     traverseInOrder(node?.left)
-    print(node!.value)
+    print(node!.value, terminator: " ")
     traverseInOrder(node?.right)
 }
 
@@ -99,19 +145,10 @@ func traverseInOrder(_ node: Node?) {
 //   / \     /  \
 //  6   10  19  33
 
-// let n = Node(12)
-// n.left = Node(8)
-// n.right = Node(22)
-// n.left!.left = Node(6)
-// n.left!.right = Node(10)
-// n.right!.left = Node(19)
-// n.right!.right = Node(33)
-// traverseInOrder(n)
-
 // Create binary tree with root value
 let bt = BinarySearchTree()
 
-// Insert values
+// INSERT
 bt.insert(12)
 bt.insert(8)
 bt.insert(22)
@@ -120,12 +157,34 @@ bt.insert(10)
 bt.insert(19)
 bt.insert(33)
 
-// Traverse tree
+// Traverse in order
 traverseInOrder(bt.root)
 
-// Find value
+// LOOKUP
 if let node = bt.lookup(10) {
     print("Found", node.value)
 } else {
     print("Nothing found!")
 }
+
+// REMOVE
+// Case 1: deleting leaf node
+print("Deleting 33...")
+bt.remove(&bt.root, 33)
+print("BST: ", terminator: "")
+traverseInOrder(bt.root)
+print()
+
+// Case 2: deleting if 1 child
+print("Deleting 19...")
+bt.remove(&bt.root, 19)
+print("BST: ", terminator: "")
+traverseInOrder(bt.root)
+print()
+
+// Case 3: deleting if 2 children
+print("Deleting 8...")
+bt.remove(&bt.root, 8)
+print("BST: ", terminator: "")
+traverseInOrder(bt.root)
+print()
