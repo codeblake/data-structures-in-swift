@@ -34,6 +34,7 @@ class BinarySearchTree {
                 // if left is nil insert new node
                 guard let left = node.left else {
                     node.left = Node(value)
+                    node.left!.parent = node
                     return
                 }
                 node = left
@@ -44,6 +45,7 @@ class BinarySearchTree {
                 // if right is nil insert new node
                 guard let right = node.right else {
                     node.right = Node(value)
+                    node.right!.parent = node
                     return
                 }
                 node = right
